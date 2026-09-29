@@ -21,6 +21,7 @@ Description=Cosa service
 
 [Service]
 ExecStart=/usr/ccsp/wifi/onewifiagent_start start
+ExecStart=/bin/sh -c 'while true; do if [ -e /tmp/.brcm_wifi_vap_ready ] && [ -e /tmp/.brcm_wifi_ready ]; then sleep 1; break; fi; sleep 3; done'
 ExecStop=/usr/ccsp/wifi/onewifiagent_start stop
 RemainAfterExit=yes
 StandardOutput=syslog+console
